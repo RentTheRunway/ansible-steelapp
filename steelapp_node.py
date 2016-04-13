@@ -142,7 +142,7 @@ class SteelAppNode(object):
         self.msg = ''
         self.changed = False
 
-        self._url = 'https://{0}:{1}/api/tm/3.0/config/active/pools/{2}'
+        self._url = 'https://{0}:{1}/api/tm/3.5/config/active/pools/{2}'
         self._url = self._url.format(server, port, pool)
 
         self._content_type = {'content-type': 'application/json'}
@@ -208,7 +208,7 @@ class SteelAppNode(object):
             if response.status_code == 200:
                 self.pool_data = json.loads(response.text)
             else:
-                changes['error'] = "HTTP {2}".format(response.status_code)
+                changes['error'] = "HTTP {0}".format(response.status_code)
                 self.module.fail_json(msg=changes)
         else:
             self.changed = False
@@ -236,7 +236,7 @@ class SteelAppNode(object):
             if response.status_code == 200:
                 self.pool_data = json.loads(response.text)
             else:
-                changes['error'] = "HTTP {2}".format(response.status_code)
+                changes['error'] = "HTTP {0}".format(response.status_code)
                 self.module.fail_json(msg=changes)
         else:
             current_node = self._get_current_node()[0]
@@ -263,7 +263,7 @@ class SteelAppNode(object):
                 if response.status_code == 200:
                     self.pool_data = json.loads(response.text)
                 else:
-                    changes['error'] = "HTTP {2}".format(response.status_code)
+                    changes['error'] = "HTTP {0}".format(response.status_code)
                     self.module.fail_json(msg=changes)
 
 
